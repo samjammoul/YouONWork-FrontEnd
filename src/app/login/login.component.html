@@ -1,0 +1,62 @@
+
+<link rel="stylesheet" type="text/css" href="login.component.css">
+<body>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://www.esteon.com/afbeeldingen/login-icon.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form novalidate #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="login" [(ngModel)]="loginRequest.email" #email="ngModel" required maxlength="30" minlength="5"   >
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" [(ngModel)]="loginRequest.password"  #password="ngModel" required maxlength="30" minlength="5" >
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <div *ngIf="email.errors?.required && email.touched"
+         class="alert alert-danger">
+      Email is required
+    </div>
+    <div *ngIf="email.errors?.maxlength && email.touched"
+         class="alert alert-danger">
+     Maximum 30 char
+    </div>
+    <div *ngIf="email.errors?.minlength && email.touched "
+         class="alert alert-danger">
+      Minimum 5 char
+    </div>
+
+    <div *ngIf="password.errors?.required && password.touched"
+         class="alert alert-danger">
+      Password is required
+    </div>
+    <div *ngIf="password.errors?.maxlength && password.touched"
+         class="alert alert-danger">
+      Maximum 30 char
+    </div>
+    <div *ngIf="password.errors?.minlength && password.touched "
+         class="alert alert-danger">
+      Minimum 5 char
+    </div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a [routerLink] = "'/signUp'" class="underlineHover" href="#">Creat account?</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="fadeIn">
+
+</div>
+
+
+
+<router-outlet></router-outlet>
+</body>
