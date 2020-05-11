@@ -10,6 +10,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class GrouphomepageComponent implements OnInit {
 
   constructor() { }
+    ngOnInit(){}
   // @ts-ignore
   lists = [this.todo, this.done]
   todo = [
