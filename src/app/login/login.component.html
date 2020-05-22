@@ -16,6 +16,7 @@
       <input type="text" id="email" class="fadeIn second" name="email" placeholder="login" [(ngModel)]="loginRequest.email" #email="ngModel" required maxlength="30" minlength="5"   >
       <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" [(ngModel)]="loginRequest.password"  #password="ngModel" required maxlength="30" minlength="5" >
       <input type="submit" class="fadeIn fourth" value="Log In">
+
     </form>
 
     <div *ngIf="email.errors?.required && email.touched"
@@ -48,6 +49,7 @@
     <div id="formFooter">
       <a [routerLink] = "'/signUp'" class="underlineHover" href="#">Creat account?</a>
     </div>
+
 
   </div>
 </div>
