@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserHandlerService} from './UserHandler/user-handler.service';
+import {Token} from '../Moduls/Token';
+import {Router} from '@angular/router';
 
-import {Login} from '../Moduls/Login';
-import {NgForm} from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',
@@ -11,27 +13,41 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-loginRequest = {
-  email: '',
-  password: ''
-};
+    loginRequest = {
+     email: '',
+     password: ''
+   };
 
-loginRequest2 = new Login();
-    constructor(private userHandler: UserHandlerService ) {
-  }
 
-  ngOnInit(): void {
-      this.test();
-  }
-
-  login(loginForm: NgForm) {
-
-}
-test() {
-    this.loginRequest2 = {
+    loginRequest2 = {
         username: 'sam',
         password: 'sam'
     }
-    this.userHandler.snigIn(this.loginRequest2);
-}
+  public  token: Token;
+    constructor(private userHandler: UserHandlerService, private router: Router) {
+    }
+
+  ngOnInit(): void {
+      localStorage.setItem('MyToken', '');
+      this.token = {token: ''};
+      this.userHandler.signIn2().subscribe((data: Token) => {
+          this.setToken(data);
+          localStorage.setItem('MyToken', data.token);
+      }, (error) => {alert('Some thing went wrong'); }
+      );
+
+  }
+  setToken(data: Token){
+        this.token = {
+          token: data.token
+      };
+        this.checkLogIn();
+  }
+  checkLogIn() {
+        if (this.token.token != null) {
+            this.router.navigate(['/teams']).then();
+        } else {
+            this.router.navigate(['/login']).then();
+        }
+  }
 }

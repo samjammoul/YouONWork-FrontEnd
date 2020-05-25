@@ -22,14 +22,16 @@ import { StatusComponent } from './Team/Dashboard/status/status.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {TeamDashBoardComponent} from './Team/Dashboard/team-dashoard/team-dash-board.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {UserHandlerService} from './login/UserHandler/user-handler.service';
+
 
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'signUp', component: SignUpComponent, canActivate: [AuthGuardService] },
-    { path: 'teams', component: TeamsComponent, canActivate: [AuthGuardService] },
+  { path: 'signUp', component: SignUpComponent },
+   { path: 'teams', component: TeamsComponent, canActivate: [AuthGuardService] },
     { path: 'dashboard/:id', component: TeamDashBoardComponent, canActivate: [AuthGuardService] },
   {path: '**', component: Page404Component}
 ];
@@ -45,6 +47,8 @@ const appRoutes: Routes = [
     TeamDashBoardComponent,
     TaskComponent,
     StatusComponent,
+
+
 
 
   ],
@@ -64,13 +68,11 @@ const appRoutes: Routes = [
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        HttpClientTestingModule
     ],
-  providers: [TeamHandlerService , {
+  providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
       multi: true
-}, FormsModule, ReactiveFormsModule],
-  bootstrap: [AppComponent]
+}, TeamHandlerService], bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,8 +13,4 @@ describe('TeamHandlerService', () => {
     });
     service = TestBed.inject(TeamHandlerService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

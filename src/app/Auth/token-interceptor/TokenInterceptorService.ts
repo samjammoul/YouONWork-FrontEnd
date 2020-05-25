@@ -5,23 +5,25 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
-
-    constructor(private auth: UserHandlerService) {
+   // private userHandler: UserHandlerService
+    constructor(private userHandler: UserHandlerService) {
     }
     intercept(req: HttpRequest<any>,
               next: HttpHandler) {
 
-        if (this.auth.getUserToken()) {
+    if (this.userHandler.getUserToken()) {
             req = req.clone({
                 setHeaders: {
-                    Authorization: 'Bearer ' + localStorage.getItem('myToken')
+                    Authorization: 'Bearer ' + localStorage.getItem('MyToken')
                 }
             });
             return next.handle(req);
         } else {
 
+
+
             return next.handle(req);
-        }
+    }
 
     }
 
