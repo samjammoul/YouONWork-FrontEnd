@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
       this.userHandler.signIn2().subscribe((data: Token) => {
           this.setToken(data);
           localStorage.setItem('MyToken', data.token);
-      }, (error) => {alert('Some thing went wrong'); }
+      }, (error) => {//alert('Some thing went wrong');
+      console.log(error); }
       );
 
   }

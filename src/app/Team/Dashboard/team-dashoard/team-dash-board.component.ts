@@ -63,7 +63,6 @@ export class TeamDashBoardComponent implements OnInit  {
 
     refresh($event: any) {
         this.refreshPage();
-        console.log('dash');
     }
 
     refreshPage() {

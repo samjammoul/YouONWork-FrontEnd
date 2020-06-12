@@ -4,11 +4,11 @@
   width: 30%;
   height: 130%;
 }
-.tt1{
-  font-family: "Rollete Qaku";
-}
-.h1{
-  font-family:italic;
+@font-face {
+    font-family: "Rollete Qaku";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 
 .navbar-nav > li{

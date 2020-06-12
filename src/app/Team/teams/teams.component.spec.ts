@@ -11,11 +11,13 @@ import {Component} from "@angular/core";
 import {TeamDashBoardComponent} from "../Dashboard/team-dashoard/team-dash-board.component";
 import {AuthGuardService} from "../../Auth/Auth-guard/auth-guard.service";
 import {Location} from "@angular/common";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 
 describe('TeamsComponent', () => {
   let component: TeamsComponent;
   let fixture: ComponentFixture<TeamsComponent>;
+  let teamHandlerService: TeamHandlerService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -52,7 +54,7 @@ describe('TeamsComponent', () => {
                 "teamName": "team3",
                 "adminId": 33
             }
-        ]
+        ];
         fixture.detectChanges();
         const  h1Des1 = fixture.debugElement.queryAll(By.css('mat-list-item'));
         const  nativeH1T1: HTMLInputElement = h1Des1[0].nativeElement;
@@ -92,7 +94,37 @@ describe('TeamsComponent', () => {
       expect(location.path()).toBe('/dashboard/10');
     //  });
     }));
+    it('should ', fakeAsync(() => {
+        component.teams = [
+            {
+                "teamId": 10,
+                "teamName": "team1",
+                "adminId": 33
+            },
+            {
+                "teamId": 11,
+                "teamName": "team2",
+                "adminId": 33
+            },
+            {
+                "teamId": 12,
+                "teamName": "team3",
+                "adminId": 33
+            }
+        ]
+        fixture.detectChanges();
+        const location = TestBed.inject(Location);
+        const  linkDes = fixture.debugElement.queryAll(By.css('mat-list-item'));
+        const nativeButton: HTMLInputElement = linkDes[0].nativeElement;
+        nativeButton.click();
+        tick();
+        fixture.detectChanges();
+        // fixture.whenStable().then(() => {
+        expect(location.path()).toBe('/dashboard/10');
+        //  });
+    }));
 });
+
 
 
 

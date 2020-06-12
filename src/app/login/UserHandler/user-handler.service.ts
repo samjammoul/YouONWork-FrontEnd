@@ -16,25 +16,16 @@ import {catchError} from 'rxjs/operators';
 export class UserHandlerService {
 
   private  url = 'http://localhost:8085/';
-
-
-
     constructor(private http: HttpClient) {
     }
-
-
-
-
      signIn(loginRequest: Login): Observable<Token> {
           return this.http.post<Token>(this.url + 'SignIn', {username: loginRequest.username, password: loginRequest.password });
   }
-
      public getUserToken() {
        return  !!localStorage.getItem('MyToken');
      }
 
      signIn2(): Observable<Token> {
-        console.log('dsfs');
         return  this.http.post<Token>(this.url + 'SignIn', {username: 'sam', password: 'sam' }
         );
     }

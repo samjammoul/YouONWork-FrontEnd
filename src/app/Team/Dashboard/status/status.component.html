@@ -5,30 +5,26 @@
 
         <app-task [tasks]="status.taskList" [statusList]="statusList"  (refresh)="refreshPage($event)">
         </app-task>
-
         <button   mat-button color="primary" (click)="addTask()"  >add new task</button>
+
     <div *ngIf="(addTaskBo)" >
-
-
-        <!-- Create Task Form -->
-        <div  [formGroup]="createTaskForm" #createTaskForm="ngForm" >
+        <form class="example-form"  [formGroup]="addTaskForm" (ngSubmit)="addTask()">
             <mat-form-field>
-                <input matInput  formControlName="taskText"  >
-                <mat-hint>
-                    Only user number and letters and _
-                </mat-hint>
-                <mat-error *ngIf="taskText.invalid && taskText.touched">
-                    Your task name doesn't look right
+                <mat-label>Task name</mat-label>
+                <input matInput id="taskName" formControlName="taskName" name="taskName"  required pattern="[a-zA-Z0-9-]+"
+                       placeholder="Ex. Testing Back-End">
+                <mat-hint></mat-hint>
+                <div *ngIf="taskName.invalid && taskName.touched">
+                <mat-error *ngIf="taskName.errors?.required">
+                    Task name is  <strong>required</strong>
                 </mat-error>
+                    <mat-error *ngIf="taskName.errors?.pattern">
+                        Pleas Enter only letters and numbers
+                    </mat-error>
+            </div>
             </mat-form-field>
-
-            <button mat-raised-button type="submit"   [disabled]="createTaskForm.valid">Add</button>
-
-        </div>
-        <p>
-            Form Value: {{ createTaskForm.value | json}}
-        </p>
-
+            <button mat-button color="primary" type="submit" [disabled]="addTaskForm.invalid">Add Task</button>
+        </form>
     </div>
 
 </div>

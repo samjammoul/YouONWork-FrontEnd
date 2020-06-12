@@ -32,7 +32,11 @@ export class TeamHandlerService {
     deleteTask(taskId: number) {
         return  this.http.delete(this.url + 'Team/Status/Task/' + taskId
         ).subscribe(error => {
-            console.log(error);
+        });
+    }
+    addTask(taskText: string, statusId: number) {
+        return  this.http.post(this.url + 'Team/Status/Task/' , {taskText: taskText, statusId: statusId}
+        ).subscribe(error => {
         });
     }
 }
