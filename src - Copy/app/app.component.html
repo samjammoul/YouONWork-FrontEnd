@@ -1,0 +1,63 @@
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+
+  </head>
+  <body>
+<header>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+
+    <ul class="navbar-nav">
+      <li class="navbar-item">
+        <img src="../assets/YouOnWork.png" class="logo" />
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link"   >Home</a>
+      </li>
+      <li class="nav-item">
+
+        <a  class="nav-link" >Link</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <button [routerLink] = "'/login'"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
+    </ul>
+  </nav>
+</header>
+
+
+
+
+<!--
+
+  <div class="jumbotron card card-image" style="padding-bottom: 32rem">
+    <div class="text-white text-center py-5 px-4">
+      <div>
+        <h2 class="card-title h1-responsive pt-3 mb-5 font-bold" style="color: black;"><strong>Managing your project become easier</strong></h2>
+        <p class="mx-5 mb-5" style="color: black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+          optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos. Odit sed qui, dolorum!
+        </p>
+        <a class="btn btn-outline-white btn-md"><i class="fas fa-clone left" ></i> View project</a>
+
+      </div>
+    </div>
+  </div>
+-->
+<div class="cont">
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+  </body>
+
+  </html>

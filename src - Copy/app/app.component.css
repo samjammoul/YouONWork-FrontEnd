@@ -1,0 +1,40 @@
+
+.logo{
+
+  width: 30%;
+  height: 130%;
+}
+@font-face {
+    font-family: "Rollete Qaku";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+.navbar-nav {
+  height: 40px;
+}
+
+.jumbotron{
+  background-image: url("https://www.aukeverbeek.nl/wp-content/uploads/2013/05/pinsdaddy-website-backgrounds-1-zellox.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-item{
+  font-size: 1.6rem;
+
+}
+.navbar-nav > li > a{
+  padding-top: 7px;
+}
+.cont{
+  padding-top:54px;
+}
+
+
+
