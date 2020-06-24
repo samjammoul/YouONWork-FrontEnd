@@ -24,6 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import {TeamDashBoardComponent} from './Team/Dashboard/team-dashoard/team-dash-board.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {UserHandlerService} from './login/UserHandler/user-handler.service';
+import { DialogComponent } from './Team/Dashboard/dialog/dialog.component';
 
 
 
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     TeamDashBoardComponent,
     TaskComponent,
     StatusComponent,
+    DialogComponent,
 
 
 

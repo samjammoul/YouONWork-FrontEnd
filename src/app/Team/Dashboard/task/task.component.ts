@@ -13,7 +13,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class TaskComponent implements OnInit {
    @Input('tasks') tasks: Task[];
    @Input('statusList') statusList: Status[];
-   @Output() someEvent = new EventEmitter<string>();
    @Output() refresh = new EventEmitter();
     private statusIndexA: number;
      id: number;
@@ -67,12 +66,8 @@ export class TaskComponent implements OnInit {
 
     }
     deleteTask(taskId: number): void {
-      console.log('sdfsd');
       this.teamHandler.deleteTask(taskId);
       this.refreshPage();
-    }
-    testParent() {
-      this.someEvent.next('test');
     }
     refreshPage() {
       this.refresh.next();

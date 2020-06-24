@@ -22,14 +22,14 @@ export class LoginComponent implements OnInit {
     loginRequest2 = {
         username: 'sam',
         password: 'sam'
-    }
-  public  token: Token;
+    };
+    public  token: Token;
     constructor(private userHandler: UserHandlerService, private router: Router) {
     }
 
   ngOnInit(): void {
       localStorage.setItem('MyToken', '');
-      this.token = {token: ''};
+      this.token = {token: ' '};
       this.userHandler.signIn2().subscribe((data: Token) => {
           this.setToken(data);
           localStorage.setItem('MyToken', data.token);
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       );
 
   }
-  setToken(data: Token){
+  setToken(data: Token) {
         this.token = {
           token: data.token
       };

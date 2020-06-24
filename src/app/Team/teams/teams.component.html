@@ -1,4 +1,27 @@
 <mat-action-list *ngFor=" let team of teams">
     <mat-list-item routerLink="/dashboard/{{team.teamId}}"> {{team.teamName}} </mat-list-item>
-
 </mat-action-list>
+<div class="example-container">
+    <button  mat-button color="primary"  *ngIf="(!teamAddable)" aria-label="Example icon button with a delete icon" id="addTeamBtn"  (click)="makeTeamAddAble()">Add new team
+    </button>
+    <div *ngIf="(teamAddable)" >
+        <form class="example-form"  [formGroup]="addTeamForm" (ngSubmit)="addTeam()">
+            <mat-form-field>
+                <mat-label>Team name</mat-label>
+                <input matInput id="teamName" formControlName="teamName" name="teamName"  required pattern="[a-zA-Z0-9-]+"
+                       placeholder="Ex. Testing">
+                <div *ngIf="teamName.invalid && teamName.touched">
+                    <mat-error *ngIf="teamName.errors?.required">
+                        Team name is  required
+                    </mat-error>
+                    <mat-error *ngIf="teamName.errors?.pattern">
+                        Pleas Enter only letters and numbers
+                    </mat-error>
+                </div>
+            </mat-form-field>
+            <button mat-button color="primary" type="submit" [disabled]="addTeamForm.invalid">Add Team</button>
+            <button mat-button color="warn" type="submit" (click)="makeTeamAddAble()">Cancel</button>
+        </form>
+    </div>
+
+</div>

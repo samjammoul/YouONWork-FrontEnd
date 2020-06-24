@@ -1,0 +1,87 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1592824126134' stop='1592824311489'>
+    <name>Protractor Demo App</name>
+    <title>Protractor Demo App</title>
+    <test-cases>
+        <test-case start='1592824126135' status='passed' stop='1592824147705'>
+            <name>should have a new take t10</name>
+            <title>should have a new take t10</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824147705' status='passed' stop='1592824160306'>
+            <name>should delete task t10</name>
+            <title>should delete task t10</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824160306' status='passed' stop='1592824181970'>
+            <name>should show a error Pleas Enter only letters and numbers  </name>
+            <title>should show a error Pleas Enter only letters and numbers  </title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824181970' status='passed' stop='1592824203568'>
+            <name>should show a error Task name is  required</name>
+            <title>should show a error Task name is  required</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824203568' status='passed' stop='1592824226985'>
+            <name>should add a new team</name>
+            <title>should add a new team</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824226985' status='passed' stop='1592824243379'>
+            <name>should show a error Pleas Enter only letters and numbers </name>
+            <title>should show a error Pleas Enter only letters and numbers </title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824243379' status='passed' stop='1592824259851'>
+            <name>should show a error team name is  required</name>
+            <title>should show a error team name is  required</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824259851' status='passed' stop='1592824278550'>
+            <name>should add a new status</name>
+            <title>should add a new status</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824278550' status='passed' stop='1592824295026'>
+            <name>should show a error status name is  required</name>
+            <title>should show a error status name is  required</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1592824295026' status='passed' stop='1592824311489'>
+            <name>should show a error Pleas Enter only letters and numbers</name>
+            <title>should show a error Pleas Enter only letters and numbers</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

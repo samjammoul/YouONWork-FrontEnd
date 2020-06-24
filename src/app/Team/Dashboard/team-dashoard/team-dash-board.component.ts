@@ -3,6 +3,7 @@ import {Status} from '../../../Moduls/Status';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TeamHandlerService} from '../../TeamServ/team-handler.service';
 import {Subject} from "rxjs";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -13,26 +14,48 @@ import {Subject} from "rxjs";
 export class TeamDashBoardComponent implements OnInit  {
     id;
     statusList: Status[] = [];
-
+    statusAddable = false;
+    // @ts-ignore
+    addStatusForm = new FormGroup('');
     constructor(private aroute: ActivatedRoute,
                 private teamHandler: TeamHandlerService,
-                private route: Router
+                private route: Router,
+                private fb: FormBuilder
     ) {
-
         this.refreshPage();
+        const StatusForm = {
+            statusName: new FormControl('', [
+                Validators.required,
+                Validators.pattern('[a-zA-Z0-9-]+')
+            ]),
+        };
+        this.addStatusForm = this.fb.group(StatusForm);
     }
 
+    get statusName() {
+
+        return this.addStatusForm.get('statusName');
+    }
 
     ngOnInit(): void {
     }
 
-
-
+    addStatus() {
+        this.MakeStatusAddAble();
+        if (this.addStatusForm.invalid) {
+        } else {
+            this.id = this.aroute.snapshot.params.id;
+            this.teamHandler.addStatus(this.addStatusForm.value.statusName, this.id);
+            this.id = this.aroute.snapshot.params.id;
+            this.statusList = [];
+            this.teamHandler.getAllStatusOfGroup(this.id).subscribe(data => this.statusList = data);
+        }
+    }
 
 
     getDataOfTeam(id: number) {
         this.teamHandler.getAllStatusOfGroup(id).subscribe(data => {
-                this.set(data);
+            this.set(data);
             }
         );
     }
@@ -62,12 +85,15 @@ export class TeamDashBoardComponent implements OnInit  {
     }
 
     refresh($event: any) {
-        this.refreshPage();
+       this.refreshPage();
     }
 
     refreshPage() {
         this.id = this.aroute.snapshot.params.id;
         this.checkAuth(this.id);
+    }
+    MakeStatusAddAble() {
+        this.statusAddable = !this.statusAddable;
     }
 }
 

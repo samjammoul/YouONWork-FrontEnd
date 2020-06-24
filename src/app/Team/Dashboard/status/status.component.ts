@@ -48,5 +48,12 @@ export class StatusComponent implements OnInit {
     refreshPage($event: any) {
         this.refresh.next();
   }
+
+    deleteStatus(id: number): void {
+        if (confirm('Are you sure you want to delete it')) {
+            this.teamHandlerService.deleteStatus(id);
+            this.refresh.next();
+        }
+    }
 }
 

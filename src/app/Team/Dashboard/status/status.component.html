@@ -2,10 +2,16 @@
 
     <h2  >{{status.statusText}}</h2>
 
+    <div class="deleteBtn">
+        <button mat-mini-fab  color="warn" aria-label="Example icon button with a menu icon" (click)="deleteStatus(status.id)" >
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+
 
         <app-task [tasks]="status.taskList" [statusList]="statusList"  (refresh)="refreshPage($event)">
         </app-task>
-        <button   mat-button color="primary" (click)="addTask()"  >add new task</button>
+        <button   mat-button color="primary" (click)="addTask()">add new task</button>
 
     <div *ngIf="(addTaskBo)" >
         <form class="example-form"  [formGroup]="addTaskForm" (ngSubmit)="addTask()">
@@ -16,7 +22,7 @@
                 <mat-hint></mat-hint>
                 <div *ngIf="taskName.invalid && taskName.touched">
                 <mat-error *ngIf="taskName.errors?.required">
-                    Task name is  <strong>required</strong>
+                    Task name is  required
                 </mat-error>
                     <mat-error *ngIf="taskName.errors?.pattern">
                         Pleas Enter only letters and numbers
@@ -26,5 +32,4 @@
             <button mat-button color="primary" type="submit" [disabled]="addTaskForm.invalid">Add Task</button>
         </form>
     </div>
-
 </div>

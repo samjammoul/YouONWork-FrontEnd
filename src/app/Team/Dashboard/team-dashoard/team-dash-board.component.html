@@ -7,4 +7,32 @@
 <div class="container-fluid" cdkDropListGroup >
     <app-status  *ngFor=" let status of statusList" [status] = "status" [statusList] ="statusList" (refresh)="refresh($event)">
     </app-status>
+
+    <div class="example-container">
+        <button  mat-fab color="primary"  *ngIf="(!statusAddable)" aria-label="Example icon button with a delete icon" id="addStatusBtn"  (click)="MakeStatusAddAble()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <div *ngIf="(statusAddable)">
+            <form class="example-form"  [formGroup]="addStatusForm" (ngSubmit)="addStatus()">
+                <mat-form-field>
+                    <mat-label>Status name</mat-label>
+                    <input matInput id="statusName" formControlName="statusName" name="statusName"  required pattern="[a-zA-Z0-9-]+"
+                           placeholder="Ex. Testing">
+                    <div *ngIf="statusName.invalid && statusName.touched">
+                        <mat-error *ngIf="statusName.errors?.required">
+                            Status name is  required
+                        </mat-error>
+                        <mat-error *ngIf="statusName.errors?.pattern">
+                            Pleas Enter only letters and numbers
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <button mat-button color="primary" type="submit" [disabled]="addStatusForm.invalid">Add Status</button>
+                <button mat-button color="warn" type="submit" (click)="MakeStatusAddAble()">Cancel</button>
+            </form>
+        </div>
+
+    </div>
 </div>
+
+
